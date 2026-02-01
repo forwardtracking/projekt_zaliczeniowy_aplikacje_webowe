@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Bokserski Sprzęt{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'sprzet/css/styles.css' %}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <span class="brand-mark">BS</span>
+          <div>
+            <h1>Bokserski Sprzęt</h1>
+            <p>Modele, zestawy i szybki podgląd oferty</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="{% url 'sprzet:rekawice_lista' %}">Rękawice</a>
+          <a href="{% url 'sprzet:buty_lista' %}">Buty</a>
+          <a href="{% url 'sprzet:ochraniacze_lista' %}">Ochraniacze</a>
+          <a href="{% url 'sprzet:owijki_lista' %}">Owijki</a>
+          <a href="{% url 'sprzet:zestawy_lista' %}">Sparring sety</a>
+          <a href="{% url 'sprzet:statystyki' %}">Statystyki</a>
+        </nav>
+        <form class="brand-search" action="{% url 'sprzet:marka_szukaj' %}" method="get">
+          <input type="text" name="q" placeholder="Wpisz markę, np. Everlast" />
+          <button type="submit">Szukaj marki</button>
+        </form>
+      </div>
+    </header>
+
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Projekt Django + HTML + CSS. Temat: sprzęt do boksu.</p>
+      </div>
+    </footer>
+  </body>
+</html>

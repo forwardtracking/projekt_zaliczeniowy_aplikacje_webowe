@@ -1,0 +1,23 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Owijki{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Owijki</h2>
+    <a class="btn" href="{% url 'sprzet:owijki_dodaj' %}">Dodaj owijki</a>
+  </section>
+
+  <section class="grid">
+    {% for item in items %}
+      <article class="card">
+        <h3>{{ item.marka }} {{ item.nazwa }}</h3>
+        <p>Długość: {{ item.dlugosc_cm }} cm | Elastyczne: {{ item.elastyczne|yesno:"Tak,Nie" }}</p>
+        <p>Cena: {{ item.cena }} PLN</p>
+        <a class="link" href="{% url 'sprzet:owijki_szczegoly' item.pk %}">Szczegóły</a>
+      </article>
+    {% empty %}
+      <p class="empty">Brak owijek w bazie.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

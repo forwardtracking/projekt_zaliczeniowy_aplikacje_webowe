@@ -1,0 +1,22 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}{{ object.marka }} {{ object.nazwa }}{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>{{ object.marka }} {{ object.nazwa }}</h2>
+    <div class="actions">
+      <a class="btn" href="{% url 'sprzet:ochraniacze_edytuj' object.pk %}">Edytuj</a>
+      <a class="btn btn-danger" href="{% url 'sprzet:ochraniacze_usun' object.pk %}">Usuń</a>
+    </div>
+  </section>
+
+  <div class="detail">
+    <p><strong>Dopasowanie:</strong> {{ object.get_dopasowanie_display }}</p>
+    <p><strong>Rozmiar:</strong> {{ object.get_rozmiar_display }}</p>
+    <p><strong>Cena:</strong> {{ object.cena }} PLN</p>
+    <p><strong>Opis:</strong> {{ object.opis|default:"—" }}</p>
+  </div>
+
+  <a class="link" href="{% url 'sprzet:ochraniacze_lista' %}">Powrót do listy</a>
+{% endblock %}

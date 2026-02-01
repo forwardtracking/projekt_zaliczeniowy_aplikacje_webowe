@@ -1,0 +1,24 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}{{ object.marka }} {{ object.nazwa }}{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>{{ object.marka }} {{ object.nazwa }}</h2>
+    <div class="actions">
+      <a class="btn" href="{% url 'sprzet:buty_edytuj' object.pk %}">Edytuj</a>
+      <a class="btn btn-danger" href="{% url 'sprzet:buty_usun' object.pk %}">Usuń</a>
+    </div>
+  </section>
+
+  <div class="detail">
+    <p><strong>Rozmiar EU:</strong> {{ object.rozmiar_eu }}</p>
+    <p><strong>Wsparcie kostki:</strong> {{ object.wsparcie_kostki|yesno:"Tak,Nie" }}</p>
+    <p><strong>Materiał:</strong> {{ object.material }}</p>
+    <p><strong>Poziom:</strong> {{ object.get_poziom_display }}</p>
+    <p><strong>Cena:</strong> {{ object.cena }} PLN</p>
+    <p><strong>Opis:</strong> {{ object.opis|default:"—" }}</p>
+  </div>
+
+  <a class="link" href="{% url 'sprzet:buty_lista' %}">Powrót do listy</a>
+{% endblock %}

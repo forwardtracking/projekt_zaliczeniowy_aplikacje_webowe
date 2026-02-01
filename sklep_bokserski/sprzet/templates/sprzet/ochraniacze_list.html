@@ -1,0 +1,23 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Ochraniacze na zęby{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Ochraniacze na zęby</h2>
+    <a class="btn" href="{% url 'sprzet:ochraniacze_dodaj' %}">Dodaj ochraniacz</a>
+  </section>
+
+  <section class="grid">
+    {% for item in items %}
+      <article class="card">
+        <h3>{{ item.marka }} {{ item.nazwa }}</h3>
+        <p>Dopasowanie: {{ item.get_dopasowanie_display }} | Rozmiar: {{ item.get_rozmiar_display }}</p>
+        <p>Cena: {{ item.cena }} PLN</p>
+        <a class="link" href="{% url 'sprzet:ochraniacze_szczegoly' item.pk %}">Szczegóły</a>
+      </article>
+    {% empty %}
+      <p class="empty">Brak ochraniaczy w bazie.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

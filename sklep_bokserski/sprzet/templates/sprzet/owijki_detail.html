@@ -1,0 +1,23 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}{{ object.marka }} {{ object.nazwa }}{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>{{ object.marka }} {{ object.nazwa }}</h2>
+    <div class="actions">
+      <a class="btn" href="{% url 'sprzet:owijki_edytuj' object.pk %}">Edytuj</a>
+      <a class="btn btn-danger" href="{% url 'sprzet:owijki_usun' object.pk %}">Usuń</a>
+    </div>
+  </section>
+
+  <div class="detail">
+    <p><strong>Długość:</strong> {{ object.dlugosc_cm }} cm</p>
+    <p><strong>Elastyczne:</strong> {{ object.elastyczne|yesno:"Tak,Nie" }}</p>
+    <p><strong>Materiał:</strong> {{ object.material }}</p>
+    <p><strong>Cena:</strong> {{ object.cena }} PLN</p>
+    <p><strong>Opis:</strong> {{ object.opis|default:"—" }}</p>
+  </div>
+
+  <a class="link" href="{% url 'sprzet:owijki_lista' %}">Powrót do listy</a>
+{% endblock %}

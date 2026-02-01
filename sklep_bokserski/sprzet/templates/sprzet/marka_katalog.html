@@ -1,0 +1,50 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Katalog marki{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Katalog marki{% if marka %}: {{ marka }}{% endif %}</h2>
+  </section>
+
+  {% if not marka %}
+    <p class="empty">Podaj markę w polu wyszukiwania, aby zobaczyć ofertę.</p>
+  {% else %}
+    <div class="catalog">
+      <h3>Rękawice</h3>
+      {% for item in rekawice %}
+        <p><a class="link" href="{% url 'sprzet:rekawice_szczegoly' item.pk %}">{{ item }}</a></p>
+      {% empty %}
+        <p class="empty">Brak rękawic tej marki.</p>
+      {% endfor %}
+
+      <h3>Buty</h3>
+      {% for item in buty %}
+        <p><a class="link" href="{% url 'sprzet:buty_szczegoly' item.pk %}">{{ item }}</a></p>
+      {% empty %}
+        <p class="empty">Brak butów tej marki.</p>
+      {% endfor %}
+
+      <h3>Ochraniacze na zęby</h3>
+      {% for item in ochraniacze %}
+        <p><a class="link" href="{% url 'sprzet:ochraniacze_szczegoly' item.pk %}">{{ item }}</a></p>
+      {% empty %}
+        <p class="empty">Brak ochraniaczy tej marki.</p>
+      {% endfor %}
+
+      <h3>Owijki</h3>
+      {% for item in owijki %}
+        <p><a class="link" href="{% url 'sprzet:owijki_szczegoly' item.pk %}">{{ item }}</a></p>
+      {% empty %}
+        <p class="empty">Brak owijek tej marki.</p>
+      {% endfor %}
+
+      <h3>Sparring sety (nazwa zawiera markę)</h3>
+      {% for item in zestawy %}
+        <p><a class="link" href="{% url 'sprzet:zestawy_szczegoly' item.pk %}">{{ item }}</a></p>
+      {% empty %}
+        <p class="empty">Brak sparring setów pasujących do marki.</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

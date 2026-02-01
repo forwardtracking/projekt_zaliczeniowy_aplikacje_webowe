@@ -1,0 +1,23 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Buty do boksu{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Buty do boksu</h2>
+    <a class="btn" href="{% url 'sprzet:buty_dodaj' %}">Dodaj buty</a>
+  </section>
+
+  <section class="grid">
+    {% for item in items %}
+      <article class="card">
+        <h3>{{ item.marka }} {{ item.nazwa }}</h3>
+        <p>Rozmiar: {{ item.rozmiar_eu }} EU | Kostka: {{ item.wsparcie_kostki|yesno:"Tak,Nie" }}</p>
+        <p>Poziom: {{ item.get_poziom_display }} | Cena: {{ item.cena }} PLN</p>
+        <a class="link" href="{% url 'sprzet:buty_szczegoly' item.pk %}">Szczegóły</a>
+      </article>
+    {% empty %}
+      <p class="empty">Brak butów w bazie.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

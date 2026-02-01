@@ -1,0 +1,22 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Sparring sety{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Sparring sety</h2>
+    <a class="btn" href="{% url 'sprzet:zestawy_dodaj' %}">Dodaj zestaw</a>
+  </section>
+
+  <section class="grid">
+    {% for item in items %}
+      <article class="card">
+        <h3>{{ item.nazwa }}</h3>
+        <p>Poziom: {{ item.get_poziom_display }} | Cena zestawu: {{ item.cena_zestawu }} PLN</p>
+        <a class="link" href="{% url 'sprzet:zestawy_szczegoly' item.pk %}">Szczegóły</a>
+      </article>
+    {% empty %}
+      <p class="empty">Brak sparring setów w bazie.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

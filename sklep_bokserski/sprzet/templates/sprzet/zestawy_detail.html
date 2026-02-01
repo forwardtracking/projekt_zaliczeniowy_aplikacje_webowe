@@ -1,0 +1,26 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}{{ object.nazwa }}{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>{{ object.nazwa }}</h2>
+    <div class="actions">
+      <a class="btn" href="{% url 'sprzet:zestawy_edytuj' object.pk %}">Edytuj</a>
+      <a class="btn btn-danger" href="{% url 'sprzet:zestawy_usun' object.pk %}">Usuń</a>
+    </div>
+  </section>
+
+  <div class="detail">
+    <p><strong>Poziom:</strong> {{ object.get_poziom_display }}</p>
+    <p><strong>Cena zestawu:</strong> {{ object.cena_zestawu }} PLN</p>
+    <p><strong>Rękawice:</strong> {{ object.rekawice|default:"—" }}</p>
+    <p><strong>Buty:</strong> {{ object.buty|default:"—" }}</p>
+    <p><strong>Ochraniacz:</strong> {{ object.ochraniacz|default:"—" }}</p>
+    <p><strong>Owijki:</strong> {{ object.owijki|default:"—" }}</p>
+    <p><strong>Suma cen regularnych:</strong> {{ object.suma_cen_regularnych }} PLN</p>
+    <p><strong>Uwagi:</strong> {{ object.uwagi|default:"—" }}</p>
+  </div>
+
+  <a class="link" href="{% url 'sprzet:zestawy_lista' %}">Powrót do listy</a>
+{% endblock %}

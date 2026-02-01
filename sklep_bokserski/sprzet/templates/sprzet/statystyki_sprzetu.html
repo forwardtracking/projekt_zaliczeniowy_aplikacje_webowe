@@ -1,0 +1,37 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Statystyki sprzętu{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Statystyki sprzętu</h2>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <h3>Rękawice</h3>
+      <p>Liczba: {{ rekawice.count }}</p>
+      <p>Średnia cena: {{ rekawice.avg|floatformat:2 }} PLN</p>
+    </div>
+    <div class="stat">
+      <h3>Buty</h3>
+      <p>Liczba: {{ buty.count }}</p>
+      <p>Średnia cena: {{ buty.avg|floatformat:2 }} PLN</p>
+    </div>
+    <div class="stat">
+      <h3>Ochraniacze</h3>
+      <p>Liczba: {{ ochraniacze.count }}</p>
+      <p>Średnia cena: {{ ochraniacze.avg|floatformat:2 }} PLN</p>
+    </div>
+    <div class="stat">
+      <h3>Owijki</h3>
+      <p>Liczba: {{ owijki.count }}</p>
+      <p>Średnia cena: {{ owijki.avg|floatformat:2 }} PLN</p>
+    </div>
+    <div class="stat">
+      <h3>Sparring sety</h3>
+      <p>Liczba: {{ zestawy.count }}</p>
+      <p>Średnia cena: {{ zestawy.avg|floatformat:2 }} PLN</p>
+    </div>
+  </div>
+{% endblock %}

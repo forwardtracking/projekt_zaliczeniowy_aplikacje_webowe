@@ -1,0 +1,18 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Usuń{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>Usuń {{ object }}</h2>
+  </section>
+
+  <form class="form" method="post">
+    {% csrf_token %}
+    <p>Czy na pewno chcesz usunąć ten obiekt?</p>
+    <div class="actions">
+      <button class="btn btn-danger" type="submit">Tak, usuń</button>
+      <a class="link" href="javascript:history.back()">Anuluj</a>
+    </div>
+  </form>
+{% endblock %}

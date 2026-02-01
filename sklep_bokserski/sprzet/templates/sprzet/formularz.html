@@ -1,0 +1,21 @@
+{% extends "sprzet/base.html" %}
+
+{% block title %}Formularz{% endblock %}
+
+{% block content %}
+  <section class="page-header">
+    <h2>
+      {% if form.instance.pk %}Edytuj{% else %}Dodaj{% endif %}
+      {{ model_verbose_name }}
+    </h2>
+  </section>
+
+  <form class="form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="actions">
+      <button class="btn" type="submit">Zapisz</button>
+      <a class="link" href="javascript:history.back()">Anuluj</a>
+    </div>
+  </form>
+{% endblock %}
