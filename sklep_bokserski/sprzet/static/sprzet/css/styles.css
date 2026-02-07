@@ -13,10 +13,14 @@
 }
 
 body {
-  margin: 0;
-  font-family: "Georgia", "Times New Roman", serif;
-  color: var(--text);
-  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; 
+  font-style: normal;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
 }
 
 .container {
