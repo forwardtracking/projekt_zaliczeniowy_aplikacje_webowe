@@ -6,3 +6,6 @@
 * CRUD + wyświetlanie szczegółów
 * Dwa dodatkowe widoki: Statystyki i wyszukiwarka
 * Template + CSS
+
+## Instrukcja
+Po pobraniu projektu w celu prawidłowego włączenia aplikacji należy wykonać komendę "python manage.py migrate"
